@@ -68,6 +68,7 @@ export default function IAScreen() {
                 key: p.id,
                 placeholder: p.nombre ?? `Prompt ${i + 1}`,
                 required: false,
+                autoAdjust: true,
             })
         })
 
