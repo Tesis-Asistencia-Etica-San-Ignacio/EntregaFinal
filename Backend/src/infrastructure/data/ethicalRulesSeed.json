@@ -1,0 +1,38 @@
+[
+    {
+      "description": "Confidencialidad de los datos de los participantes",
+      "status": "APROBADO",
+      "justification": "Requiere protocolo de confidencialidad",
+      "cita": "https://www.google.com",
+      "codeNumber": "1001"
+    },
+    {
+      "description": "Consentimiento informado obligatorio",
+      "status": "APROBADO",
+      "justification": "Requiere protocolo de consentimiento informado",
+      "cita": "https://www.amazon.com",
+      "codeNumber": "1002"
+    },
+    {
+      "description": "Protección de datos personales",
+      "justification": "Requiere protocolo de protección de datos personales",
+      "cita": "https://www.facebook.com",
+      "status": "APROBADO", 
+      "codeNumber": "1003"
+    },
+    {
+      "description": "Uso ético de los resultados",
+      "justification": "Requiere protocolo de uso ético de los resultados",
+      "cita": "https://www.google.com",
+      "status": "APROBADO",
+      "codeNumber": "1004"
+    },
+    {
+      "description": "Revisión por pares de la metodología",
+      "status": "NO_APROBADO",
+      "justification": "Requiere protocolo de revisión más estricto",
+      "cita": "https://www.google.com",
+      "codeNumber": "1005"
+
+    }
+]

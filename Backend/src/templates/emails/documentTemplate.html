@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html dir="ltr" lang="es">
+
+<head>
+    <meta content="text/html; charset=UTF-8" http-equiv="Content-Type" />
+    <meta name="x-apple-disable-message-reformatting" />
+    <title>
+        <%= infoMail.subject %>
+    </title>
+</head>
+
+<body style="background-color:rgb(245,245,245); font-family: ui-sans-serif, system-ui, sans-serif; padding:40px 0">
+    <table align="center" width="100%"
+        style="max-width:600px; margin:auto; background-color:#fff; border-radius:8px; overflow:hidden">
+        <tbody>
+            <tr>
+                <td>
+                    <!-- Encabezado -->
+                    <table width="100%" style="background-color:rgb(0,58,112); padding:24px 32px">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p style="font-size:24px; color:#fff; font-weight:700; margin:0">
+                                        Hospital Universitario San Ignacio
+                                    </p>
+                                    <p style="font-size:16px; color:#fff; margin:0">
+                                        Pontificia Universidad Javeriana
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Cuerpo -->
+                    <table width="100%" style="padding:32px">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p style="font-size:16px; color:#333; margin:0">
+                                        Estimado/a <strong>
+                                            <%= infoMail.recipientName || '' %>
+                                        </strong>,
+                                    </p>
+                                    <p
+                                        style="font-size:16px; color:#333; margin-top:24px; margin-bottom:16px; line-height:24px">
+                                        Me dirijo a usted en mi calidad de evaluador del
+                                        <strong>Departamento de Investigación Médica</strong> del
+                                        <strong>Hospital Universitario San Ignacio</strong>.
+                                        Adjunto encontrará un documento PDF con el informe detallado
+                                        de retroalimentación generado por el modelo <strong> <%= modelo %></strong>.
+                                    </p>
+                                    <p
+                                        style="font-size:16px; color:#333; margin-top:16px; margin-bottom:16px; line-height:24px">
+                                        El informe incluye un <strong>análisis exhaustivo</strong>,
+                                        <strong>respuestas detalladas</strong>, <strong>interpretaciones
+                                            científicas</strong> y
+                                        <strong>recomendaciones basadas en la evidencia</strong>.
+                                    </p>
+
+                                    <!-- Si se recibe "mensajeAdicional" se muestra esta sección -->
+                                    <% if (infoMail.mensajeAdicional) { %>
+                                        <table width="100%"
+                                            style="margin:24px 0; background-color:rgb(249,249,249); padding:16px; border-left:4px solid rgb(0,58,112)">
+                                            <tbody>
+                                                <tr>
+                                                    <td>
+                                                        <p
+                                                            style="font-size:16px; font-weight:700; color:#333; margin:0">
+                                                            Comentarios Adicionales:
+                                                        </p>
+                                                        <p
+                                                            style="font-size:16px; color:#333; margin-top:8px; margin-bottom:16px; line-height:24px">
+                                                            <%= infoMail.mensajeAdicional %>
+                                                        </p>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        <% } %>
+
+                                            <p
+                                                style="font-size:16px; color:#333; margin-top:24px; margin-bottom:16px; line-height:24px">
+                                                <strong>Adjunto:</strong> el PDF con el reporte. Revíselo a detalle y no
+                                                dude en
+                                                contactarnos si necesita información adicional.
+                                            </p>
+
+                                            <p
+                                                style="font-size:16px; color:#333; margin-top:24px; margin-bottom:16px; line-height:24px">
+                                                Atentamente,
+                                            </p>
+                                            <p
+                                                style="font-size:16px; font-weight:700; color:#333; margin:0; line-height:24px">
+                                                <%= userName %>
+                                            </p>
+                                            <p style="font-size:14px; color:#555; margin:0; line-height:24px">
+                                                Departamento de Investigación Médica
+                                            </p>
+                                            <p style="font-size:14px; color:#555; margin:0; line-height:24px">
+                                                Hospital Universitario San Ignacio
+                                            </p>
+                                            <p style="font-size:14px; color:#555; margin:0; line-height:24px">
+                                                Pontificia Universidad Javeriana
+                                            </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <!-- Pie de correo -->
+                    <hr style="border-color:#e6e6e6; margin:0 32px; border:none; border-top:1px solid #eaeaea" />
+                    <table width="100%" style="padding:24px 32px; background-color:rgb(249,249,249)">
+                        <tbody>
+                            <tr>
+                                <td>
+                                    <p style="font-size:14px; color:#555; font-weight:700; margin:0">
+                                        Información de Contacto:
+                                    </p>
+                                    <p style="font-size:14px; color:#555; margin:0">
+                                        Teléfono: <%= infoMail.telefono || '(601) 594 6161' %>
+                                    </p>
+                                    <p style="font-size:14px; color:#555; margin:0">
+                                        Email:
+                                        <a href="mailto:<%= infoMail.emailContacto || 'investigacion@husi.org.co' %>"
+                                            style="color:rgb(0,58,112); text-decoration:none">
+                                            <%= infoMail.emailContacto || 'investigacion@husi.org.co' %>
+                                        </a>
+                                    </p>
+                                    <p style="font-size:14px; color:#555; margin:0">
+                                        Dirección:
+                                        <%= infoMail.direccion || 'Carrera 7 No. 40-62, Bogotá, Colombia' %>
+                                    </p>
+                                    <p style="font-size:14px; color:#555; margin:0">
+                                        Sitio web:
+                                        <a href="<%= infoMail.website || 'https://www.husi.org.co' %>"
+                                            style="color:rgb(0,58,112); text-decoration:none">
+                                            <%= infoMail.website || 'www.husi.org.co' %>
+                                        </a>
+                                    </p>
+                                    <hr
+                                        style="border-color:#e6e6e6; margin:16px 0; border:none; border-top:1px solid #eaeaea" />
+                                    <p style="font-size:12px; color:#666; margin:0; line-height:24px">
+                                        <strong>Aviso de Confidencialidad:</strong> Este correo y cualquier archivo
+                                        adjunto contienen
+                                        información confidencial de Hospital Universitario San Ignacio y están
+                                        destinados únicamente
+                                        al destinatario indicado. Si lo recibió por error, notifíquelo y elimine el
+                                        mensaje.
+                                    </p>
+                                    <p style="font-size:12px; color:#666; margin:0; line-height:24px">
+                                        ©2025 Hospital Universitario San Ignacio - Todos los derechos reservados.
+                                    </p>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>

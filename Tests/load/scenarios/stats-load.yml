@@ -1,0 +1,26 @@
+config:
+  target: 'http://localhost:8080/api'
+  http:
+    cookieJar: true
+  plugins:
+    metrics-by-endpoint:
+      useOnlyRequestNames: true
+  phases:
+    - duration: 10s # Duración total de la prueba
+      arrivalCount: 50 # 50 VUs en total, distribuidos uniformemente en 10 s
+
+scenarios:
+  - name: stats
+    flow:
+      - post:
+          name: 'Login'
+          url: '/auth/login'
+          json:
+            email: 'admin-husi@gmail.com'
+            password: 'Password123*'
+      - get:
+          name: 'Obtener estadísticas'
+          url: '/stats/evaluations'
+          qs:
+            from: '2025-04-15'
+            to: '2025-05-15'

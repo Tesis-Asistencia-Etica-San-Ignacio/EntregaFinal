@@ -1,0 +1,93 @@
+services:
+  mongo:
+    image: mongo:6.0
+    container_name: mongo-local
+    restart: unless-stopped
+    ports:
+      - "27017:27017"
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: admin
+      MONGO_INITDB_ROOT_PASSWORD: secret123
+    volumes:
+      - mongo_data:/data/db
+    healthcheck:
+      # esperamos 30s antes de empezar a chequear
+      start_period: 30s
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      test: >
+        mongosh admin \
+          -u admin -p secret123 \
+          --quiet --eval "db.adminCommand({ ping: 1 })" >/dev/null 2>&1
+    networks:
+      - husi-network
+
+  minio:
+    image: minio/minio
+    container_name: minio-container
+    restart: unless-stopped
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ROOT_USER: minio_access_key
+      MINIO_ROOT_PASSWORD: minio_secret_key
+    command: server /data --console-address ":9001"
+    volumes:
+      - minio_data:/data
+    healthcheck:
+      test: [ "CMD-SHELL", "echo > /dev/tcp/localhost/9000" ]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    networks:
+      - husi-network
+
+  backend:
+    build:
+      context: ./Backend
+      dockerfile: Dockerfile
+      target: runtime
+    image: husi-backend
+    container_name: backend-container-tesis
+    ports:
+      - "8080:3000"
+    env_file:
+      - ./Backend/.env
+    depends_on:
+      mongo:
+        condition: service_healthy
+      minio:
+        condition: service_healthy
+    command: [ "node", "dist/server.js" ]
+    networks:
+      - husi-network
+    environment:
+      - CHROME_PATH=/usr/bin/chromium
+
+  frontend:
+    build:
+      context: ./Frontend
+      dockerfile: Dockerfile
+    image: husi-frontend
+    container_name: frontend-container-tesis
+    ports:
+      - "3000:80"
+    env_file:
+      - ./Frontend/.env
+    depends_on:
+      backend:
+        condition: service_started
+    networks:
+      - husi-network
+
+volumes:
+  mongo_data:
+    name: mongo_data
+  minio_data:
+    name: minio_data
+
+networks:
+  husi-network:
+    driver: bridge

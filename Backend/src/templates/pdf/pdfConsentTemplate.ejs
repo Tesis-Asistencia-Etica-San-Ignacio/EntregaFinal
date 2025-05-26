@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Verdana, sans-serif;
+      font-size: 11px;
+      margin: 40px;
+      color: #000;
+    }
+    .header-table, .main-table{
+      border-collapse: collapse;
+      width: 80%;
+      margin: 20px auto;
+    }
+    .signature-table {
+      border-collapse: collapse;
+      width: 100%;
+      margin: 20px auto;
+    }
+    .header-table td, .main-table td, .signature-table td {
+      border: 1px solid black;
+      padding: 8px;
+      vertical-align: top;
+    }
+    .header-cell {
+      background-color: #8EAADB;
+      font-weight: bold;
+      text-align: center;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .header-title {
+      font-family: Verdana, sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      text-align: center;
+      text-shadow: 0.5px 0 0 black;
+    }
+
+    .header-subtitle {
+      font-family: Verdana, sans-serif;
+      font-weight: 900;
+      font-size: 13px;
+      text-align: center;
+      text-transform: uppercase;
+      text-shadow: 0.5px 0 0 black;
+    }
+
+    .header-caracteristics {
+      font-family: Verdana, sans-serif;
+      font-weight: bold;
+      font-size: 9px;
+      text-align: left;
+      line-height: 1.4;
+    }
+    .content {
+      text-align: justify;
+      margin-top: 5px;
+    }
+    .note {
+      color: green;
+      font-size: 10px;
+      margin-top: 10px;
+      text-align: justify;
+    }
+    .signature-table-cell1 {
+      border: 1px solid black;
+      width: 35%;
+      text-align: left;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 11px;
+      padding: 5px;
+    }
+    .signature-table-cell2 {
+      border: 1px solid black;
+      width: 65%;
+      text-align: left;
+      font-family: 'Times New Roman', Times, serif;
+      font-size: 11px;
+      padding: 5px;
+    }
+  </style>
+</head>
+
+<body>
+
+<table class="header-table">
+  <tr>
+    <td rowspan="2" style="width: 10%; text-align: center; ">
+        <img src="<%= logoHusiUri %>" alt="Logo HUSI" style="max-width: 140px; max-height: 80px; margin-top: 10px;"><br>
+    </td>
+    <td class="header-title" style="width: 70%; font-weight: bold;">
+      GESTIÓN DE INVESTIGACIÓN CLÍNICA<br>
+    </td>
+    <td rowspan="2" style="width: 20%; font-size: 10px; text-align: left;">
+      <strong>CÓDIGO:</strong> <%= data.codigo %><br>
+      <strong>VERSIÓN:</strong> <%= data.version %><br>
+      <strong>APROBADO:</strong> <%= data.fecha %><br>
+    </td>
+  </tr>
+  <tr>
+    <td class="header-subtitle" style="font-weight: bold; font-size: 13px;">
+        CONSENTIMIENTO INFORMADO EN PROYECTOS DE INVESTIGACIÓN
+    </td>
+  </tr>
+</table>
+
+<table class="main-table">
+
+    <tr>
+    <td class="header-cell">INTRODUCCIÓN</td>
+  </tr>
+  <tr>
+    <td>
+      Código del sujeto: <%= data.codigo_sujeto %><br>
+      <br><br>
+      Este documento de consentimiento es para uso en un proyecto de investigación que involucrará a sujetos que quizá tengan 
+      o no la capacidad de dar consentimiento para su participación. En este documento de consentimiento, “usted” hace referencia 
+      al participante de la investigación. Si usted es un representante legal, recuerde que “usted” hace referencia al 
+      participante de investigación.
+      <br><br>
+      Usted está siendo invitado a participar en el proyecto de investigación “<%= data.nombre_proyecto %>”. 
+      Este documento le proporciona la información necesaria para que usted participe voluntaria y libremente. 
+      El proyecto es realizado por <%= data.instituciones %>. Antes de dar su consentimiento, usted necesita entender 
+      plenamente el propósito de su decisión. Este proceso se denomina consentimiento informado. Una vez que haya leído 
+      este documento y resuelto con el investigador las dudas, se le pedirá que firme este formato en señal de aceptación 
+      de participar.
+   </td>
+  </tr>
+
+    <tr>
+    <td class="header-cell">INFORMACIÓN GENERAL</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="content">
+        <strong>1. ¿Por qué se debe realizar este estudio?</strong><br>
+        <%= data.problema %>
+      </div>
+      <div class="content">
+        <strong>2. ¿Cuál es el objetivo de este estudio?</strong><br>
+        <%= data.objetivo %>
+      </div>
+      <div class="content">
+        <strong>3. ¿En qué consiste el estudio?</strong><br>
+        <%= data.def_estudio %>
+      </div>
+      <div class="content">
+        <strong>4. ¿Cuáles son las molestias o riesgos esperados?</strong><br>
+        <%= data.riesgos %>
+      </div>
+      <div class="content">
+        <strong>5. ¿Cuáles son los beneficios que puedo obtener por participar?</strong><br>
+        <%= data.beneficios%>
+      </div>
+      <div class="content">
+        <strong>6. ¿Existe confidencialidad en el manejo de mis datos? Este proyecto se acoge a la ley 1581 de 2012 (Hábeas Data) que aplica para el tratamiento de datos personales.</strong><br>
+        <%= data.confidencialidad %>
+      </div>
+      <div class="content">
+        <strong>7.  ¿Existen procedimientos alternativos que pudieran ser ventajosos para mi?</strong><br>
+        <%= data.p_alternativos %>
+      </div>
+      <div class="content">
+        <strong>8.   Expresar el compromiso de proporcionar información actualizada obtenida durante el estudio, aunque ésta pudiera afectar la voluntad del sujeto para continuar participando</strong><br>
+        <%= data.compromiso_info %>
+      </div>
+      <div class="content">
+        <strong>9.  ¿Existe alguna obligación financiera? Participar en este estudio no tiene ningún costo económico para usted. </strong><br>
+        <%= data.ob_financiera %>
+      </div>
+      <div class="content">
+        <strong>10. ¿Cuánto tiempo durará mi participación en el estudio?  </strong><br>
+        <%= data.duracion %>
+      </div>
+      <div class="content">
+        <strong>11. ¿Qué sucede si no deseo participa o me retiro del estudio? Usted puede decidir no participar o retirarse en cualquier momento del estudio, sin que esto afecte de manera alguna el tratamiento médico que necesita. </strong><br>
+        <%= data.afectaciones %>
+      </div>
+
+      <% 
+      // Inicializamos un contador para las preguntas
+      let preguntaCounter = 11; // Asumiendo que la primera pregunta aquí es la 12
+      %>
+
+      <% if (data.tipo_poblacion === 'menores' || data.tipo_poblacion === 'discapasitados') { 
+        preguntaCounter++; // Incrementamos el contador si esta condición se cumple
+      %>
+      <div class="content">
+        <strong><%= preguntaCounter %>. Al menor de edad o la persona que usted representa se le solicitará informar su aceptación para ingresar al estudio a través de un Asentimiento Informado.  De acuerdo a la Resolución 8430 de 1993, el proceso de asentimiento debe estar precedido de una valoración de razonamiento entendimiento y lógica realizada por un psicólogo, neurólogo o psiquiatra.  A través de este documento se solicita su autorización para realizar la valoración. </strong><br>
+        <%= data.asentimiento_informado %>
+      </div>
+      <% } %>
+
+      <% if (data.clasificacion_riesgo === 'riesgo_mayor' || data.tipo_estudio === 'intervencion_muestras' || data.tipo_estudio === 'intervencion_medica') { 
+        preguntaCounter++; // Incrementamos el contador para esta pregunta
+      %>
+      <div class="content">
+        <strong><%= preguntaCounter %>. ¿Qué sucede si esta investigación afecta directamente mi salud?</strong><br>
+        <%= data.riesgo_salud_poliza %>
+      </div>
+      <% } %>
+      <div class="content">
+        Si bien es poco probable que se produzca una lesión, el/la <%= data.patrocinador %> realizará el
+         pago de los gastos médicos relacionados con una lesión directamente causada por los medicamentos administrados/los procedimientos
+         realizados en esta investigación al centro hospitalario del estudio, y el centro del estudio le proporcionará el tratamiento
+         médico sin costo alguno para usted o para el sistema de salud.  Para garantizar la cobertura de los riesgos o los posibles daños
+         y lesiones y la atención adecuada que pueda surgir del estudio, <%= data.patrocinador %>, ha contratado un seguro con
+         la compañía <%= data.compania_seguro %>, con dirección en <%= data.dir_seguro %>, Colombia.
+      </div>
+      <div class="content">
+          En caso que necesite información o en caso de emergencia póngase en contacto con
+            <% if (data.genero_doctor==='Masculino' ) { %>
+                  el investigador del estudio Dr.
+            <% } else if (data.genero_doctor==='Femenino' ) { %>
+                  la investigadora del estudio Dra.
+            <% } else { %>
+                  el/la investigador/a del estudio Dr./Dra. <% } %>
+            <%= data.nombre_doctor %>, celular <%= data.cel_doctor %>.
+                  A fin de activar la póliza la investigadora contactará a la Directora de la Oficina de
+                  Investigaciones del Hospital Universitario San Ignacio, <%= data.nombre_dir_investigaciones %>, 
+                  celular <%= data.cel_correo_dir_investigaciones %>.
+      </div>
+      <div class="content">
+        Al firmar este formulario usted no renuncia a ningún derecho legal, aceptar atención médica o aceptar el pago de lo el/la s
+        gastos médicos.
+      </div>
+
+    </td>
+  </tr>
+
+    <tr>
+    <td class="header-cell">AUTORIZACIÓN</td>
+  </tr>
+  <tr>
+    <td>
+      <div class="content">
+        He comprendido las explicaciones que en un lenguaje claro y sencillo se me han brindado.
+        El investigador me ha permitido expresar todas mis observaciones y ha aclarado todas las dudas y preguntas
+        que he planteado respecto a los fines, métodos, ventajas, inconvenientes y pronóstico de participar en el estudio.
+        Se me ha proporcionado una copia de este documento.
+        <br><br>
+        Al firmar este documento doy mi consentimiento voluntario para participar en el estudio “<%= data.nombre_estudio %>”.
+        <br><br>
+        Si usted tiene dudas acerca de su participación en este estudio puede comunicarse con el investigador principal:
+        Dr/a. <%= data.nombre_inv_principal %>, celular <%= data.cel_inv_principal %>, teléfono <%= data.tel_inv_principal %>,
+        ext <%= data.ext_inv_principal %>. Presidente del Comité de Ética Institucional: 
+        <%= data.nombre_presidente %>, Calle 42 N° 4-49, oficina 507. Teléfono 5946161 ext. 2470. 
+      </div>
+
+      
+      <table class="signature-table">
+        <tr>
+          <td class="signature-table-cell1">Nombre del participante</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Firma del participante</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Número de documento de identidad</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Teléfono</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Fecha</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+      </table>
+      
+      <% if (data.clasificacion_riesgo === 'riesgo_mayor' || data.clasificacion_riesgo === 'riesgo_minimo' ||
+        data.tipo_estudio === 'intervencion_muestras' || data.clasificacion_riesgo === 'intervencion_medica') { %>
+      <table class="signature-table">
+        <tr>
+          <td class="signature-table-cell1">Nombre del Testigo Imparcial 1</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Firma</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Número de documento de identidad</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Teléfono</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Relación con el participante</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Fecha</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+      </table>
+      <% } %>
+
+      <% if (data.clasificacion_riesgo === 'riesgo_mayor' || 
+        data.tipo_estudio === 'intervencion_muestras' || data.clasificacion_riesgo === 'intervencion_medica') { %>
+      <table class="signature-table">
+        <tr>
+          <td class="signature-table-cell1">Nombre del Testigo Imparcial 2</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Firma</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Número de documento de identidad</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Teléfono</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Relación con el participante</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        <tr>
+          <td class="signature-table-cell1">Fecha</td>
+          <td class="signature-table-cell2"></td>
+        </tr>
+        </table>
+        <% } %>
+
+        <table class="signature-table">
+          <tr>
+            <td class="signature-table-cell1">Nombre del miembro del equipo de investigación que realiza el proceso de consentimiento</td>
+            <td class="signature-table-cell2"></td>
+          </tr>
+          <tr>
+            <td class="signature-table-cell1">Número de documento de identidad </td>
+            <td class="signature-table-cell2"></td>
+          </tr>
+          <tr>
+            <td class="signature-table-cell1">Fecha</td>
+            <td class="signature-table-cell2"></td>
+          </tr>
+          <tr>
+            <td class="signature-table-cell1">Rol en el proyecto</td>
+            <td class="signature-table-cell2"></td>
+          </tr>
+        </table>
+
+        <table class="signature-table">
+          <tr>
+            <td class="signature-table-cell1">Nombre del Participante</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Número de documento de identidad</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+        </table>
+        <table class="signature-table">
+          <tr>
+            <td class="signature-table-cell1">Nombre del Representante Legal 1</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Firma</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Número de documento de identidad</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+
+          <tr>
+            <td class="signature-table-cell1">Teléfono</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Relación con el participante</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Fecha</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+        </table>
+
+        <table class="signature-table">
+          <tr>
+            <td class="signature-table-cell1">Nombre del Representante Legal 2</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Firma</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Número de documento de identidad</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Teléfono</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Relación con el participante</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Fecha</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+        </table>
+
+        <table class="signature-table">
+          <tr>
+            <td class="signature-table-cell1">Nombre del miembro del equipo de investigación que realiza el proceso de consentimiento</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Firma</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Número de documento de identidad</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+
+          <tr>
+            <td class="signature-table-cell1">Fecha</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+          <tr>
+            <td class="signature-table-cell1">Rol en el Proyecto</td>
+            <td class="signature-table-cell2"></td>
+        </tr>
+        </table>
+
+    </td>
+
+  </tr>
+
+</table>
+</body>
+</html>

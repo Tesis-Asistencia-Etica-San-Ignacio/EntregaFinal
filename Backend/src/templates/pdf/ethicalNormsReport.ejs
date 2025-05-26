@@ -1,0 +1,157 @@
+<!-- src/templates/pdf/ethicalNormsReport.ejs -->
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 40px;
+      color: black;
+      font-size: 12px;
+    }
+    .header-table {
+      width: 90%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+      margin-left: 5%;
+      border: 1px solid black;
+    }
+    .header-table td {
+      border: 1px solid black;
+      padding: 5px;
+      vertical-align: middle;
+    }
+    .header-title {
+      font-family: Verdana, sans-serif;
+      font-weight: 900;
+      font-size: 15px;
+      text-align: center;
+      text-shadow: 0.5px 0 0 black;
+    }
+    .header-subtitle {
+      font-family: Verdana, sans-serif;
+      font-weight: 900;
+      font-size: 15px;
+      text-align: center;
+      text-transform: uppercase;
+      text-shadow: 0.5px 0 0 black;
+    }
+    .header-caracteristics {
+      font-family: Verdana, sans-serif;
+      font-weight: bold;
+      font-size: 10px;
+      text-align: left;
+      line-height: 1.4;
+    }
+    .logo {
+      max-width: 110px;
+      margin: 4px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 40px;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 10px;
+      text-align: left;
+    }
+    th {
+      background-color: #f2f2f2;
+    }
+    .status-aprobado {
+      color: #0f5132;
+      background-color: #d1e7dd;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .status-no-aprobado {
+      color: #842029;
+      background-color: #f8d7da;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .status-no-aplica {
+      color: #664d03;
+      background-color: #fff3cd;
+      font-weight: bold;
+      padding: 4px 8px;
+      border-radius: 4px;
+    }
+    .extract {
+      line-height: 1.4;
+    }
+    .footer {
+      text-align: right;
+      font-size: 0.9em;
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Cabecera con logos y títulos -->
+  <table class="header-table">
+    <tr>
+      <td rowspan="2" style="width: 20%; text-align: center;">
+        <img src="<%= logoHusiUri %>" alt="Logo HUSI" class="logo"><br>
+        <img src="<%= logoPujUri %>" alt="Logo PUJ" class="logo">
+      </td>
+      <td class="header-title" style="width: 60%;">GESTIÓN DE INVESTIGACIÓN CLÍNICA</td>
+      <td rowspan="2" class="header-caracteristics" style="width: 20%;">
+        CÓDIGO: CIE-R-01<br>
+        VERSIÓN: <%= String(version).padStart(2, '0') %><br>
+        APROBADO: 28/05/21<br>
+        PÁGINA: 1 DE 1
+      </td>
+    </tr>
+    <tr>
+      <td class="header-subtitle">RESULTADOS DE LA EVALUACIÓN AUTOMÁTICA</td>
+    </tr>
+  </table>
+
+  <!-- Tabla dinámica de normas éticas -->
+  <table>
+    <thead>
+      <tr>
+        <th>Número de Norma</th>
+        <th>Descripción</th>
+        <th>Justificación</th>
+        <th>Estado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% norms.forEach(norm => { %>
+        <tr>
+          <td><%= norm.codeNumber %></td>
+          <td class="extract"><%= norm.description %></td>
+          <td class="extract"><%= norm.justification %></td>
+          <td>
+            <% let statusClass = ''; %>
+            <% if (norm.status === 'APROBADO') { %>
+              <% statusClass = 'status-aprobado'; %>
+            <% } else if (norm.status === 'NO_APLICA') { %>
+              <% statusClass = 'status-no-aplica'; %>
+            <% } else { %>
+              <% statusClass = 'status-no-aprobado'; %>
+            <% } %>
+            <span class="<%= statusClass %>">
+              <%= norm.status %>
+            </span>
+          </td>
+        </tr>
+      <% }) %>
+    </tbody>
+  </table>
+
+  <!-- Pie de página -->
+  <div class="footer">
+    Fecha de evaluación: <%= date %>
+  </div>
+
+</body>
+</html>

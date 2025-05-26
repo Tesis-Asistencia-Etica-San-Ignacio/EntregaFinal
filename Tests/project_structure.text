@@ -1,0 +1,51 @@
+- .env
+- .gitignore
+- e2e
+  - .auth
+    - README.md
+  - global-setup.ts
+  - package-lock.json
+  - package.json
+  - playwright.config.ts
+  - tsconfig.json
+- integration
+  - .env.test
+  - jest.config.js
+  - package-lock.json
+  - package.json
+  - README.md
+  - specs
+    - auth
+      - login.spec.ts
+      - refresh.spec.ts
+      - session.spec.ts
+    - fixtures
+      - semillas BD, mocks
+    - setup-env.ts
+  - tsconfig.json
+- load
+  - package-lock.json
+  - package.json
+  - README.md
+  - scenarios
+    - auth-load.yml
+    - evaluation
+      - document.pdf
+      - evaluation-load.yml
+      - evaluationLLM-load.yml
+    - promptsAndconfigIA-load.yml
+    - resetMyPrompts-load.yml
+    - stats-load.yml
+    - user-load.yml
+  - tsconfig.json
+- package-lock.json
+- package.json
+- project_structure.text
+- README.md
+- settings.json
+- shared
+  - fixtures
+    - datos JSON reutilizables
+  - helpers
+    - auth.ts
+- tsconfig.base.json

@@ -1,0 +1,71 @@
+config:
+  target: 'http://localhost:8080/api'
+  http:
+    cookieJar: true
+  plugins:
+    metrics-by-endpoint:
+      useOnlyRequestNames: true
+  phases:
+    - duration: 10s
+      arrivalCount: 50 # 50 VUs en 10 s
+
+scenarios:
+  - name: flujo-perfil-completo
+    flow:
+      # 1) CREAR USUARIO  ─ email aleatorio, pass fija
+      - post:
+          name: 'Create User'
+          url: '/user/investigador'
+          json:
+            name: 'Pancho'
+            last_name: 'Rodriguez'
+            email: 'user{{ $randomString(8) }}@mail.com'
+            password: 'Password123*'
+          capture:
+            - json: '$.email' # ← guardamos el email devuelto
+              as: 'email'
+
+      # 2) LOGIN con la contraseña original
+      - post:
+          name: 'Login original'
+          url: '/auth/login'
+          json:
+            email: '{{ email }}'
+            password: 'Password123*'
+
+      - think: 1 # pequeña pausa
+
+      # 3) ACTUALIZAR PERFIL (solo nombre y apellido)
+      - patch:
+          name: 'Update Profile'
+          url: '/user/'
+          json:
+            name: 'Pancho'
+            last_name: 'Rodriguez'
+
+      - think: 0.5
+
+      # 4) CAMBIAR CONTRASEÑA  ─ nueva fija para todos los VUs
+      - post:
+          name: 'Update Password'
+          url: '/user/update-password'
+          json:
+            password: 'Password123*'
+            newPassword: 'NewPassword123*'
+
+      - think: 0.5
+
+      # 5) LOGIN con la nueva contraseña
+      - post:
+          name: 'Login nuevo'
+          url: '/auth/login'
+          json:
+            email: '{{ email }}'
+            password: 'NewPassword123*'
+
+      - think: 0.5
+
+      # 6) ELIMINAR USUARIO
+      - delete:
+          name: 'Delete User'
+          url: '/user/'

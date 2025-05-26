@@ -1,0 +1,13 @@
+{
+    "extends": "../tsconfig.base.json",
+    "compilerOptions": {
+        "rootDir": "..",
+        "types": [
+            "@playwright/test",
+            "node"
+        ]
+    },
+    "include": [
+        "./**/*.ts"
+    ]
+}

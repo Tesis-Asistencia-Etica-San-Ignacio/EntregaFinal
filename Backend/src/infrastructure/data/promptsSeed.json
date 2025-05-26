@@ -1,0 +1,111 @@
+[
+    {
+      "nombre": "Prompt 1",
+      "texto": "Contiene versión y fecha del FCI",
+      "descripcion": "esta suele ser la fecha que esta en parte inferior",
+      "codigo": "Q01"
+    },
+    {
+      "nombre": "Prompt 2",
+      "texto": "Contiene título del proyecto e instituciones participantes",
+      "descripcion": ".",
+      "codigo": "Q02"
+    },
+    {
+      "nombre": "Prompt 3",
+      "texto": "Describe la justificación y los objetivos de la investigación. Problema, pertinencia del estudio, objetivo general",
+      "descripcion": ".",
+      "codigo": "Q03"
+    },
+    {
+      "nombre": "Prompt 4",
+      "texto": "Describe los procedimientos del estudio y su propósito, incluyendo la identificación de aquellos que son experimentales (aleatorización, cegamiento, uso de placebo, etc.).",
+      "descripcion": ".",
+      "codigo": "Q04"
+    },
+    {
+      "nombre": "Prompt 5",
+      "texto":  "Determina las molestias o los riesgos esperados.  Si no existen informar.",
+      "descripcion": ".",
+      "codigo": "Q05"
+    },
+    {
+      "nombre": "Prompt 6",
+      "texto": "Determina los beneficios que puedan obtenerse. Si no existen informar.",
+      "descripcion": ".Descripción del prompt 6",
+      "codigo": "Q06"
+    },
+    {
+      "nombre": "Prompt 7.1",
+      "texto": "Dónde se almacenarán los datos.",
+      "descripcion": ".",
+      "codigo": "Q07.1"
+    },
+    {
+      "nombre": "Prompt 7.2",
+      "texto": "Mecanismos de custodia y seguridad de los mismos.",
+      "descripcion": ".",
+      "codigo": "Q07.2"
+    },
+    {
+      "nombre": "Prompt 7.3",
+      "texto": "Tiempo de custodia.",
+      "descripcion": ".",
+      "codigo": "Q07.3"
+    },
+    {
+      "nombre": "Prompt 7.4",
+      "texto": "Quiénes tendrán acceso a la información y bajo qué parámetros de seguridad se accederá a ellos.",
+      "descripcion": ".",
+      "codigo": "Q07.4"
+    },
+    {
+      "nombre": "Prompt 7.5",
+      "texto": "Tratamiento de datos: codificación o anonimización tanto para los análisis como para la publicación de los resultados",
+      "descripcion": ".",
+      "codigo": "Q07.5"
+    },
+    {
+      "nombre": "Prompt 7.6",
+      "texto": "Posibilidad de conocer sus datos personales registrados en la base de datos del estudio, solicitar rectificación de los mismos y de retirar su consentimiento para el tratamiento de los datos en cualquier momento del estudio, excepto a partir de la anonimización.",
+      "descripcion": ".",
+      "codigo": "Q07.6"
+    },
+    {
+      "nombre": "Prompt 7.7",
+      "texto": "Describe los procesos de transferencia de datos a terceros, en caso de estudios colaborativos, y la garantía de mantener la privacidad, confidencialidad y seguridad en el tratamiento por parte del tercero.",
+      "descripcion": ".",
+      "codigo": "Q07.7"
+    },
+    {
+      "nombre": "Prompt 8",
+      "texto": "Indica los procedimientos alternativos  que  pudieran  ser ventajosos para el sujeto.",
+      "descripcion": ".",
+      "codigo": "Q08"
+    },
+    {
+      "nombre": "Prompt 9",
+      "texto": "Expresa el compromiso de proporcionar información actualizada obtenida durante el estudio, aunque ésta pudiera afectar la voluntad del sujeto para continuar participando.En caso de realización de estudios que requieran entrega de resultados de procedimiento o consejería (genética, por ejemplo), se debe explicar el proceso.",
+      "descripcion": ".",
+      "codigo": "Q09"
+    },
+    {
+      "nombre": "Prompt 10",
+      "texto": "Expresa la garantía de que, si existen gastos adicionales, éstos serán cubiertos por el presupuesto de la investigación o de la institución responsable de la misma.Enunciar costos generados por participar en el estudio, ej.: transporte, alimentación etc. y la forma cómo serán reembolsados (bonos de alimentación o transporte, dinero).",
+      "descripcion": ".",
+      "codigo": "Q10"
+    },
+    {
+      "nombre": "Prompt 11",
+      "texto": "Indica tiempo de permanencia en el estudio: Tiempo de participación, frecuencia de las intervenciones si aplica.",
+      "descripcion": ".",
+      "codigo": "Q11"  
+    },
+    {
+      "nombre": "Prompt 12",
+      "texto": "Indica la libertad de retirar su consentimiento en cualquier momento y dejar de participar en el estudio sin que por ello se creen perjuicios para continuar su cuidado y tratamiento.",
+      "descripcion": ".",
+      "codigo": "Q12"
+    }
+  ]
+  

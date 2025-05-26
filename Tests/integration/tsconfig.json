@@ -1,0 +1,17 @@
+{
+  "extends": "../tsconfig.base.json",
+  "compilerOptions": {
+    "rootDir": "../..",
+    "outDir": "dist",
+    "typeRoots": ["node_modules/@types"],
+    "types": [
+      "jest",
+      "node"
+    ]
+  },
+  "include": [
+    "./**/*.ts",
+    "../shared/**/*.ts",
+    "../../Backend/src/**/*.ts"
+, "jest.config.js"  ]
+}
