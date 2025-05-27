@@ -16,3 +16,6 @@ docker-compose up --build
 Una vez que los contenedores estén activos, abra su navegador y acceda a
 http://localhost:3000/auth
 para comprobar que la aplicación se está ejecutando correctamente.
+
+
+
